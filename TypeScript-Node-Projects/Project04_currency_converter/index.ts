@@ -41,13 +41,13 @@ async function askQuestion() {
     const answers = await inquirer.prompt([
         {
             type: "list",
-            name: "cur1",
+            name: "currency1",
             message: chalk.blackBright("Which currency do you have to convert?"),
             choices: ["PKR", "INR", "USD", "EUR", "GBP"],
         },
         {
             type: "list",
-            name: "cur2",
+            name: "currency2",
             message: chalk.blackBright("Which currency do you want to convert into?"),
             choices: ["PKR", "INR", "USD", "EUR", "GBP"],
         },
@@ -64,11 +64,11 @@ async function askQuestion() {
         },
     ]);
 
-    const result = exchange(answers.cur1, answers.cur2, Number(answers.amountI));
+    const result = exchange(answers.currency1, answers.currency2, Number(answers.amountI));
     console.log(
-        `${answers.cur1} ${chalk.greenBright(
+        `${answers.currency1} ${chalk.greenBright(
             answers.amountI.toLocaleString("en-US")
-        )}/- is equal to ${answers.cur2} ${chalk.green(
+        )}/- is equal to ${answers.currency2} ${chalk.green(
             result.toLocaleString("en-US")
         )}/-`
     );
